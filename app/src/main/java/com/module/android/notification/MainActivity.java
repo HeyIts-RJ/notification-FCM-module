@@ -26,7 +26,7 @@ import com.google.firebase.iid.InstanceIdResult;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CHANNEL_ID = "APp Name";
+    public static final String CHANNEL_ID = "APp Name";
     private static final String CHANNEL_NAME = "APP Subname";
     private static final String CHANNEL_DESC = "This is  notification module";
     private EditText editTextEmail, editTextPassword;
@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        findViewById(R.id.buttonNotify).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.buttonNotify).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayNotification();
             }
-        });
+        });*/
     }
 
     private void createUser() {
@@ -124,14 +124,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void displayNotification() {
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle("It is Working")
-                .setContentText("This is the description content")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        NotificationManagerCompat mnotificationmgr = NotificationManagerCompat.from(this);
-        mnotificationmgr.notify(1, mBuilder.build());
-    }
 }
