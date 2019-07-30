@@ -59,18 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (task.isSuccessful()) {
-                            String token = task.getResult().getToken();
 
-                        } else {
-
-                        }
-                    }
-                });
 
 
         findViewById(R.id.buttonNotify).setOnClickListener(new View.OnClickListener() {
@@ -116,6 +105,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+        if (mauth.getCurrentUser() != null) {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
 
     private void startProfileActivity() {
